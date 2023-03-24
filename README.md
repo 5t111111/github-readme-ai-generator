@@ -1,6 +1,9 @@
-## GitHub Readme OpenAI Generator 
+## GitHub Readme AI Generator
 
-This Next.js app (_with app directory_) leverages Defer using GitHub data as a prompt for OpenAI completion API. 
+- https://youtu.be/kHsTp2LENUI
+- https://github.com/jherr/github-openai-defer
+
+This Next.js app (_with app directory_) leverages Defer using GitHub data as a prompt for OpenAI completion API.
 
 ## Getting started
 
