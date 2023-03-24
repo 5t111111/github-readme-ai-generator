@@ -115,9 +115,10 @@ export async function getGithubInfo(
 
 export async function generateGitHubProfile(githubUsername: string) {
   const { languages, location, stars } = await getGithubInfo(githubUsername);
-  const prompt = `Write a funny five sentence GitHub profile description with 2 emojis maximum, with the following information:
-- Lives in ${location}
-- Wrote ${Object.entries(languages)
+  const prompt = `以下の情報から、私の GitHub プロフィールを表現する5パラグラフくらいの楽しい文章を作ってください。なお、5文字の絵文字を使ってください。
+- 私のアカウント名は ${githubUsername} です。
+${location ? `- ${location} に住んでいます。` : ""}
+- これらのプログラミング言語を使います: ${Object.entries(languages)
     .map(([name, count]) =>
       name === "total" || (count / languages.total) * 100 < 1
         ? ""
@@ -125,7 +126,7 @@ export async function generateGitHubProfile(githubUsername: string) {
     )
     .filter((v) => !!v)
     .join(", ")}
-- Has ${stars} GitHub stars`;
+- GitHub スター数は ${stars} です。`;
 
   const completion = await openai.createCompletion({
     model: "text-davinci-003",
